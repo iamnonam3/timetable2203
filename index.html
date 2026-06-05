@@ -1,0 +1,2692 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>Расписание летней сессии СиПД-22.03</title>
+  <style>
+    :root {
+      --bg: #f5f7fb;
+      --card: #ffffff;
+      --text: #172033;
+      --muted: #667085;
+      --line: #e6ebf3;
+      --blue: #2563eb;
+      --blue-soft: #eff6ff;
+      --orange-soft: #fff7ed;
+      --green-soft: #ecfdf5;
+      --red-soft: #fef2f2;
+      --shadow: 0 18px 44px rgba(15, 23, 42, 0.10);
+    }
+
+    body[data-theme="dark"] {
+      --bg: #0f172a;
+      --card: #172033;
+      --text: #eef4ff;
+      --muted: #aab6cc;
+      --line: rgba(148, 163, 184, 0.24);
+      --blue-soft: rgba(37, 99, 235, 0.18);
+      --orange-soft: rgba(249, 115, 22, 0.13);
+      --green-soft: rgba(22, 163, 74, 0.14);
+      --red-soft: rgba(220, 38, 38, 0.14);
+      --shadow: 0 18px 44px rgba(0, 0, 0, 0.28);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      padding-left: env(safe-area-inset-left);
+      padding-right: env(safe-area-inset-right);
+      font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(circle at 18% 10%, rgba(37, 99, 235, 0.18), transparent 30%),
+        radial-gradient(circle at 90% 4%, rgba(249, 115, 22, 0.14), transparent 28%),
+        linear-gradient(180deg, #eef4ff 0%, var(--bg) 42%, #ffffff 100%);
+      min-height: 100vh;
+    }
+
+    body[data-theme="dark"] {
+      background:
+        radial-gradient(circle at 18% 10%, rgba(37, 99, 235, 0.22), transparent 30%),
+        radial-gradient(circle at 90% 4%, rgba(249, 115, 22, 0.10), transparent 28%),
+        linear-gradient(180deg, #101d3b 0%, var(--bg) 48%, #111827 100%);
+    }
+
+    button,
+    input {
+      font: inherit;
+    }
+
+    .page {
+      width: min(1120px, calc(100% - 32px));
+      margin: 0 auto;
+      padding: 38px 0 56px;
+    }
+
+    .hero {
+      position: relative;
+      overflow: hidden;
+      border-radius: 34px;
+      padding: 34px;
+      color: white;
+      background:
+        linear-gradient(135deg, rgba(30, 64, 175, 0.96), rgba(59, 130, 246, 0.9)),
+        url("data:image/svg+xml,%3Csvg width='760' height='440' viewBox='0 0 760 440' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' stroke='white' stroke-opacity='.16'%3E%3Cpath d='M-30 95h820M-30 175h820M-30 255h820M-30 335h820'/%3E%3Cpath d='M90-30v500M235-30v500M380-30v500M525-30v500M670-30v500'/%3E%3C/g%3E%3C/svg%3E");
+      box-shadow: var(--shadow);
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      width: 260px;
+      height: 260px;
+      right: -90px;
+      top: -90px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.16);
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      max-width: 810px;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      padding: 8px 13px;
+      border: 1px solid rgba(255, 255, 255, 0.28);
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.14);
+      backdrop-filter: blur(10px);
+      font-size: 14px;
+      font-weight: 750;
+      margin-bottom: 18px;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: clamp(34px, 5.3vw, 62px);
+      line-height: 0.98;
+      letter-spacing: -0.058em;
+    }
+
+    .subtitle {
+      margin: 18px 0 0;
+      color: rgba(255, 255, 255, 0.88);
+      font-size: clamp(16px, 2vw, 20px);
+      line-height: 1.55;
+    }
+
+    .hero-stats {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 12px;
+      margin-top: 28px;
+    }
+
+    .stat {
+      padding: 16px;
+      border-radius: 20px;
+      background: rgba(255, 255, 255, 0.14);
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      backdrop-filter: blur(10px);
+    }
+
+    .stat strong {
+      display: block;
+      font-size: 25px;
+      line-height: 1;
+      margin-bottom: 6px;
+    }
+
+    .stat span {
+      display: block;
+      font-size: 13px;
+      color: rgba(255, 255, 255, 0.78);
+    }
+
+    .notice {
+      display: flex;
+      gap: 14px;
+      align-items: flex-start;
+      margin: 24px 0;
+      padding: 18px 20px;
+      border-radius: 22px;
+      background: var(--orange-soft);
+      border: 1px solid #fed7aa;
+      color: #7c2d12;
+    }
+
+    .notice-icon {
+      width: 30px;
+      height: 30px;
+      display: grid;
+      place-items: center;
+      flex: 0 0 auto;
+      border-radius: 10px;
+      background: #ffedd5;
+      font-weight: 900;
+    }
+
+    .dashboard {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 16px;
+      align-items: start;
+      margin: 0 0 22px;
+    }
+
+    .panel {
+      padding: 20px;
+      border-radius: 26px;
+      background: rgba(255, 255, 255, 0.88);
+      border: 1px solid rgba(230, 235, 243, 0.92);
+      box-shadow: 0 12px 32px rgba(15, 23, 42, 0.07);
+      backdrop-filter: blur(12px);
+    }
+
+    .panel-title {
+      margin: 0 0 12px;
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 900;
+      letter-spacing: 0.07em;
+      text-transform: uppercase;
+    }
+
+    .next-card {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .next-main {
+      min-width: 0;
+    }
+
+    .next-date {
+      display: inline-flex;
+      width: fit-content;
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: var(--blue-soft);
+      color: #1d4ed8;
+      font-weight: 900;
+      font-size: 14px;
+    }
+
+    .next-subject {
+      margin: 0;
+      font-size: 22px;
+      line-height: 1.22;
+      letter-spacing: -0.03em;
+    }
+
+    .next-meta {
+      color: var(--muted);
+      font-weight: 750;
+      line-height: 1.45;
+    }
+
+    .next-button {
+      width: fit-content;
+      border: 0;
+      cursor: pointer;
+      padding: 10px 14px;
+      border-radius: 999px;
+      background: var(--blue);
+      color: white;
+      font-weight: 850;
+      box-shadow: 0 10px 22px rgba(37, 99, 235, 0.20);
+      white-space: nowrap;
+    }
+
+    .update-note {
+      display: flex;
+      justify-content: space-between;
+      gap: 14px;
+      margin: -2px 0 20px;
+      padding: 14px 16px;
+      border-radius: 22px;
+      background: rgba(239, 246, 255, 0.82);
+      border: 1px solid #dbeafe;
+      color: #1e3a8a;
+      font-size: 14px;
+      line-height: 1.45;
+      font-weight: 740;
+      box-shadow: 0 10px 26px rgba(15, 23, 42, 0.05);
+      backdrop-filter: blur(12px);
+    }
+
+    .update-note strong {
+      color: #1d4ed8;
+    }
+
+    .update-note small {
+      display: block;
+      margin-top: 4px;
+      color: #64748b;
+      font-weight: 720;
+    }
+
+    .timeline-panel {
+      padding-bottom: 18px;
+    }
+
+    .timeline {
+      position: relative;
+      display: grid;
+      grid-auto-flow: column;
+      grid-auto-columns: minmax(108px, 1fr);
+      gap: 0;
+      overflow-x: auto;
+      padding: 18px 0 2px;
+      scrollbar-width: thin;
+      scroll-snap-type: x proximity;
+      -webkit-overflow-scrolling: touch;
+      overscroll-behavior-inline: contain;
+    }
+
+    .timeline::before {
+      content: "";
+      position: absolute;
+      left: 42px;
+      right: 42px;
+      top: 30px;
+      height: 2px;
+      background: linear-gradient(90deg, rgba(37, 99, 235, 0.20), rgba(37, 99, 235, 0.36), rgba(249, 115, 22, 0.22));
+      z-index: 0;
+    }
+
+    .timeline-item {
+      position: relative;
+      min-height: 112px;
+      padding: 30px 8px 8px;
+      border: 0;
+      border-radius: 18px;
+      background: transparent;
+      color: var(--text);
+      cursor: pointer;
+      text-align: center;
+      transition: transform .18s ease, background .18s ease;
+      z-index: 1;
+      scroll-snap-align: start;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    .timeline-item::before {
+      content: "";
+      position: absolute;
+      top: 4px;
+      left: 50%;
+      width: 16px;
+      height: 16px;
+      transform: translateX(-50%);
+      border-radius: 50%;
+      background: var(--blue);
+      border: 4px solid #ffffff;
+      box-shadow: 0 0 0 1px rgba(37, 99, 235, 0.22), 0 8px 16px rgba(37, 99, 235, 0.18);
+      animation: pulseDot 2.4s ease-in-out infinite;
+    }
+
+    .timeline-item:hover,
+    .timeline-item.active {
+      background: rgba(37, 99, 235, 0.08);
+      transform: translateY(-1px);
+    }
+
+    .timeline-day {
+      display: block;
+      font-size: 19px;
+      font-weight: 950;
+      letter-spacing: -0.04em;
+      line-height: 1;
+      color: var(--text);
+    }
+
+    .timeline-type {
+      display: inline-flex;
+      width: fit-content;
+      max-width: 100%;
+      margin-top: 8px;
+      padding: 5px 8px;
+      border-radius: 999px;
+      background: #f8fafc;
+      color: var(--muted);
+      font-size: 11px;
+      font-weight: 850;
+      white-space: nowrap;
+    }
+
+    .timeline-subject {
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      max-width: 112px;
+      margin: 8px auto 0;
+      font-size: 12px;
+      line-height: 1.2;
+      font-weight: 900;
+      color: #263247;
+      overflow: hidden;
+    }
+
+
+    .hero-topline {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-bottom: 18px;
+    }
+
+    .theme-toggle {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      min-height: 38px;
+      padding: 8px 13px;
+      border: 1px solid rgba(255, 255, 255, 0.28);
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.14);
+      color: white;
+      cursor: pointer;
+      font-weight: 850;
+      backdrop-filter: blur(10px);
+      transition: transform .18s ease, background .18s ease;
+    }
+
+    .theme-toggle:hover {
+      transform: translateY(-1px);
+      background: rgba(255, 255, 255, 0.22);
+    }
+
+    .utility-strip {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+      padding: 12px;
+      margin: 0 0 20px;
+      border: 1px solid rgba(230, 235, 243, 0.92);
+      border-radius: 24px;
+      background: rgba(255, 255, 255, 0.72);
+      box-shadow: 0 10px 28px rgba(15, 23, 42, 0.06);
+      backdrop-filter: blur(12px);
+    }
+
+    .utility-label {
+      padding-left: 6px;
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 900;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    .utility-actions {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+
+    .utility-button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      min-height: 42px;
+      padding: 10px 14px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: #ffffff;
+      color: #334155;
+      cursor: pointer;
+      font-weight: 900;
+      box-shadow: 0 8px 18px rgba(15, 23, 42, 0.05);
+      transition: transform .18s ease, border-color .18s ease, background .18s ease;
+    }
+
+    .utility-button:hover {
+      transform: translateY(-1px);
+      border-color: #bfdbfe;
+      background: var(--blue-soft);
+      color: #1d4ed8;
+    }
+
+    .utility-button span {
+      width: 25px;
+      height: 25px;
+      display: grid;
+      place-items: center;
+      border-radius: 999px;
+      background: var(--blue-soft);
+      color: #1d4ed8;
+      font-weight: 950;
+    }
+
+    .toast {
+      position: fixed;
+      left: 50%;
+      bottom: max(24px, env(safe-area-inset-bottom));
+      transform: translateX(-50%) translateY(18px);
+      opacity: 0;
+      pointer-events: none;
+      padding: 12px 16px;
+      border-radius: 999px;
+      background: #111827;
+      color: white;
+      box-shadow: var(--shadow);
+      transition: opacity .22s ease, transform .22s ease;
+      font-weight: 800;
+      z-index: 30;
+      text-align: center;
+      max-width: min(92vw, 520px);
+    }
+
+    .toast.show {
+      opacity: 1;
+      transform: translateX(-50%) translateY(0);
+    }
+
+    body[data-theme="dark"] .panel,
+    body[data-theme="dark"] .month,
+    body[data-theme="dark"] .utility-strip,
+    body[data-theme="dark"] .tab,
+    body[data-theme="dark"] .control,
+    body[data-theme="dark"] .filter,
+    body[data-theme="dark"] .search {
+      background: rgba(23, 32, 51, 0.86);
+      border-color: rgba(148, 163, 184, 0.22);
+    }
+
+    body[data-theme="dark"] .utility-button,
+    body[data-theme="dark"] .timeline-item,
+    body[data-theme="dark"] .date,
+    body[data-theme="dark"] .short-place span,
+    body[data-theme="dark"] .info,
+    body[data-theme="dark"] summary.lesson-summary::after {
+      background: rgba(15, 23, 42, 0.58);
+      border-color: rgba(148, 163, 184, 0.20);
+      color: #eef4ff;
+    }
+
+    body[data-theme="dark"] .value,
+    body[data-theme="dark"] .timeline-day,
+    body[data-theme="dark"] .timeline-subject,
+    body[data-theme="dark"] .subject {
+      color: #eef4ff;
+    }
+
+    body[data-theme="dark"] .notice {
+      color: #fed7aa;
+      background: rgba(249, 115, 22, 0.11);
+      border-color: rgba(251, 146, 60, 0.30);
+    }
+
+    body[data-theme="dark"] .notice-icon {
+      color: #fed7aa;
+      background: rgba(249, 115, 22, 0.18);
+    }
+
+    body[data-theme="dark"] .filter.active {
+      background: var(--blue);
+      color: white;
+      border-color: var(--blue);
+    }
+
+    body[data-theme="dark"] .timeline-type {
+      background: rgba(148, 163, 184, 0.16);
+      color: #cbd5e1;
+    }
+
+    body[data-theme="dark"] .timeline-item::before {
+      border-color: #172033;
+    }
+
+    body[data-theme="dark"] .timeline-item:hover,
+    body[data-theme="dark"] .timeline-item.active {
+      background: rgba(37, 99, 235, 0.14);
+    }
+
+    body[data-theme="dark"] .dashboard .panel {
+      background: linear-gradient(180deg, rgba(23, 32, 51, 0.92), rgba(15, 23, 42, 0.84));
+      border-color: rgba(148, 163, 184, 0.24);
+    }
+
+    body[data-theme="dark"] .timeline::before {
+      background: linear-gradient(90deg, rgba(96, 165, 250, 0.30), rgba(96, 165, 250, 0.44), rgba(96, 165, 250, 0.24));
+    }
+
+    body[data-theme="dark"] .timeline-item {
+      color: #eef4ff;
+    }
+
+    body[data-theme="dark"] .update-note {
+      background: rgba(37, 99, 235, 0.12);
+      border-color: rgba(96, 165, 250, 0.24);
+      color: #dbeafe;
+    }
+
+    body[data-theme="dark"] .update-note strong {
+      color: #bfdbfe;
+    }
+
+    body[data-theme="dark"] .update-note small {
+      color: #aab6cc;
+    }
+
+
+    .tools {
+      display: grid;
+      grid-template-columns: minmax(260px, 1fr) auto;
+      gap: 14px;
+      align-items: center;
+      margin: 0 0 20px;
+    }
+
+    .search {
+      width: 100%;
+      min-height: 46px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.88);
+      color: var(--text);
+      padding: 0 16px;
+      outline: none;
+      box-shadow: 0 8px 22px rgba(15, 23, 42, 0.06);
+      font-weight: 720;
+    }
+
+    .search:focus {
+      border-color: #bfdbfe;
+      box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.12);
+    }
+
+    .filters {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      justify-content: flex-end;
+    }
+
+    .filter {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      color: #334155;
+      font-weight: 850;
+      padding: 10px 14px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.82);
+      border: 1px solid var(--line);
+      box-shadow: 0 8px 22px rgba(15, 23, 42, 0.06);
+      cursor: pointer;
+    }
+
+    .filter:hover,
+    .filter.active {
+      background: var(--blue);
+      color: white;
+      border-color: var(--blue);
+    }
+
+    .tab,
+    .control,
+    .filter,
+    .next-button,
+    .timeline-item,
+    .to-top,
+    summary.lesson-summary {
+      -webkit-tap-highlight-color: transparent;
+      touch-action: manipulation;
+    }
+
+    .toolbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 14px;
+      flex-wrap: wrap;
+      margin: 0 0 20px;
+    }
+
+    .tabs,
+    .controls {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .tab,
+    .control {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      color: #334155;
+      font-weight: 850;
+      padding: 10px 14px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.82);
+      border: 1px solid var(--line);
+      box-shadow: 0 8px 22px rgba(15, 23, 42, 0.06);
+    }
+
+    .control {
+      cursor: pointer;
+    }
+
+    .control:hover,
+    .tab:hover {
+      background: #ffffff;
+      border-color: #c7d2fe;
+    }
+
+    .months {
+      display: grid;
+      gap: 28px;
+    }
+
+    .month {
+      border-radius: 30px;
+      padding: 22px;
+      background: rgba(255, 255, 255, 0.88);
+      border: 1px solid rgba(230, 235, 243, 0.92);
+      box-shadow: 0 12px 38px rgba(15, 23, 42, 0.08);
+      backdrop-filter: blur(12px);
+      overflow: hidden;
+    }
+
+    .month-title {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin: 0 0 18px;
+      font-size: 25px;
+      letter-spacing: -0.035em;
+    }
+
+    .month-title::after {
+      content: "";
+      height: 1px;
+      flex: 1;
+      background: linear-gradient(90deg, var(--line), transparent);
+    }
+
+    .schedule {
+      display: grid;
+      gap: 14px;
+    }
+
+    details.lesson {
+      border: 1px solid var(--line);
+      border-radius: 24px;
+      background: var(--card);
+      overflow: hidden;
+      transition: box-shadow .2s ease, border-color .2s ease, transform .2s ease;
+    }
+
+    details.lesson:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 14px 30px rgba(15, 23, 42, 0.08);
+    }
+
+    details.lesson[open] {
+      box-shadow: 0 16px 34px rgba(15, 23, 42, 0.10);
+      border-color: #bfdbfe;
+    }
+
+    details.lesson.focus-highlight {
+      border-color: var(--blue);
+      box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.12), 0 16px 34px rgba(15, 23, 42, 0.10);
+    }
+
+    details.lesson.hidden,
+    .month.hidden {
+      display: none;
+    }
+
+    summary.lesson-summary {
+      display: grid;
+      grid-template-columns: 118px minmax(0, 1fr);
+      gap: 18px;
+      align-items: start;
+      padding: 18px;
+      list-style: none;
+      cursor: pointer;
+      outline: none;
+    }
+
+    summary.lesson-summary::-webkit-details-marker {
+      display: none;
+    }
+
+    summary.lesson-summary::after {
+      content: "Открыть подробности";
+      grid-column: 2;
+      justify-self: start;
+      margin-top: 2px;
+      padding: 7px 10px;
+      border-radius: 999px;
+      background: #f8fafc;
+      color: #64748b;
+      border: 1px solid #eef2f7;
+      font-size: 12px;
+      font-weight: 850;
+      transition: color .2s ease, background .2s ease;
+    }
+
+    details[open] summary.lesson-summary::after {
+      content: "Свернуть подробности";
+      color: var(--blue);
+      background: var(--blue-soft);
+    }
+
+    .date {
+      padding: 14px;
+      border-radius: 18px;
+      background: #f8fafc;
+      border: 1px solid #edf2f7;
+      text-align: center;
+    }
+
+    .date .day {
+      display: block;
+      font-size: 28px;
+      font-weight: 950;
+      letter-spacing: -0.045em;
+      line-height: 1;
+    }
+
+    .date .weekday {
+      display: block;
+      margin-top: 6px;
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 760;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .lesson-main {
+      min-width: 0;
+      overflow: hidden;
+    }
+
+    .topline {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 10px;
+    }
+
+    .time {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      padding: 7px 11px;
+      border-radius: 999px;
+      background: var(--blue-soft);
+      color: #1d4ed8;
+      font-weight: 850;
+      font-size: 14px;
+      white-space: nowrap;
+    }
+
+    .type {
+      display: inline-flex;
+      align-items: center;
+      padding: 7px 11px;
+      border-radius: 999px;
+      font-size: 13px;
+      font-weight: 850;
+      white-space: normal;
+      line-height: 1.15;
+    }
+
+    .type.credit {
+      background: var(--green-soft);
+      color: #166534;
+    }
+
+    .type.exam {
+      background: var(--red-soft);
+      color: #991b1b;
+    }
+
+    .type.consult {
+      background: var(--orange-soft);
+      color: #9a3412;
+    }
+
+    .subject {
+      margin: 0;
+      font-size: 21px;
+      line-height: 1.25;
+      letter-spacing: -0.027em;
+      overflow-wrap: anywhere;
+      word-break: normal;
+    }
+
+    .short-place {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 13px;
+      color: var(--muted);
+      font-size: 15px;
+      font-weight: 680;
+    }
+
+    .short-place span {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 8px 10px;
+      border-radius: 12px;
+      background: #f8fafc;
+      border: 1px solid #eef2f7;
+    }
+
+    .details-content {
+      border-top: 1px solid var(--line);
+      padding: 18px 18px 18px 154px;
+      animation: openDetails .18s ease;
+    }
+
+    @keyframes openDetails {
+      from {
+        opacity: 0;
+        transform: translateY(-4px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .info-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px;
+    }
+
+    .info {
+      padding: 12px 13px;
+      border-radius: 16px;
+      background: #f8fafc;
+      border: 1px solid #eef2f7;
+      min-width: 0;
+    }
+
+    .info.full {
+      grid-column: 1 / -1;
+    }
+
+    .label {
+      display: block;
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 850;
+      text-transform: uppercase;
+      letter-spacing: 0.055em;
+      margin-bottom: 5px;
+    }
+
+    .value {
+      display: block;
+      font-size: 15px;
+      line-height: 1.35;
+      font-weight: 720;
+      color: #1f2937;
+      overflow-wrap: anywhere;
+    }
+
+    details.lesson.consultation {
+      border-color: #fed7aa;
+      background: linear-gradient(180deg, #fffaf5 0%, #ffffff 100%);
+    }
+
+    details.lesson.exam {
+      border-color: #fecaca;
+      background: linear-gradient(180deg, #fff7f7 0%, #ffffff 100%);
+    }
+
+    .empty-state {
+      display: none;
+      padding: 24px;
+      border-radius: 24px;
+      background: rgba(255, 255, 255, 0.88);
+      border: 1px solid var(--line);
+      color: var(--muted);
+      font-weight: 750;
+      text-align: center;
+    }
+
+    .empty-state.show {
+      display: block;
+    }
+
+    .footer {
+      margin-top: 28px;
+      padding: 20px 4px 0;
+      color: var(--muted);
+      font-size: 14px;
+      text-align: right;
+    }
+
+    .to-top {
+      position: fixed;
+      right: max(24px, env(safe-area-inset-right));
+      bottom: max(24px, env(safe-area-inset-bottom));
+      width: 48px;
+      height: 48px;
+      display: grid;
+      place-items: center;
+      border: 1px solid rgba(255, 255, 255, 0.45);
+      border-radius: 999px;
+      background: rgba(37, 99, 235, 0.92);
+      color: white;
+      box-shadow: 0 16px 34px rgba(37, 99, 235, 0.26);
+      cursor: pointer;
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(12px);
+      transition: opacity .2s ease, transform .2s ease, visibility .2s ease, background .2s ease;
+      z-index: 20;
+      font-weight: 900;
+      font-size: 20px;
+    }
+
+    .to-top.show {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+
+    .to-top:hover {
+      background: #1d4ed8;
+    }
+
+    @media (max-width: 900px) {
+      .dashboard,
+  
+    .hero-topline {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-bottom: 18px;
+    }
+
+    .theme-toggle {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      min-height: 38px;
+      padding: 8px 13px;
+      border: 1px solid rgba(255, 255, 255, 0.28);
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.14);
+      color: white;
+      cursor: pointer;
+      font-weight: 850;
+      backdrop-filter: blur(10px);
+      transition: transform .18s ease, background .18s ease;
+    }
+
+    .theme-toggle:hover {
+      transform: translateY(-1px);
+      background: rgba(255, 255, 255, 0.22);
+    }
+
+    .utility-strip {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+      padding: 12px;
+      margin: 0 0 20px;
+      border: 1px solid rgba(230, 235, 243, 0.92);
+      border-radius: 24px;
+      background: rgba(255, 255, 255, 0.72);
+      box-shadow: 0 10px 28px rgba(15, 23, 42, 0.06);
+      backdrop-filter: blur(12px);
+    }
+
+    .utility-label {
+      padding-left: 6px;
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 900;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    .utility-actions {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+
+    .utility-button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      min-height: 42px;
+      padding: 10px 14px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: #ffffff;
+      color: #334155;
+      cursor: pointer;
+      font-weight: 900;
+      box-shadow: 0 8px 18px rgba(15, 23, 42, 0.05);
+      transition: transform .18s ease, border-color .18s ease, background .18s ease;
+    }
+
+    .utility-button:hover {
+      transform: translateY(-1px);
+      border-color: #bfdbfe;
+      background: var(--blue-soft);
+      color: #1d4ed8;
+    }
+
+    .utility-button span {
+      width: 25px;
+      height: 25px;
+      display: grid;
+      place-items: center;
+      border-radius: 999px;
+      background: var(--blue-soft);
+      color: #1d4ed8;
+      font-weight: 950;
+    }
+
+    .toast {
+      position: fixed;
+      left: 50%;
+      bottom: max(24px, env(safe-area-inset-bottom));
+      transform: translateX(-50%) translateY(18px);
+      opacity: 0;
+      pointer-events: none;
+      padding: 12px 16px;
+      border-radius: 999px;
+      background: #111827;
+      color: white;
+      box-shadow: var(--shadow);
+      transition: opacity .22s ease, transform .22s ease;
+      font-weight: 800;
+      z-index: 30;
+      text-align: center;
+      max-width: min(92vw, 520px);
+    }
+
+    .toast.show {
+      opacity: 1;
+      transform: translateX(-50%) translateY(0);
+    }
+
+    body[data-theme="dark"] .panel,
+    body[data-theme="dark"] .month,
+    body[data-theme="dark"] .utility-strip,
+    body[data-theme="dark"] .tab,
+    body[data-theme="dark"] .control,
+    body[data-theme="dark"] .filter,
+    body[data-theme="dark"] .search {
+      background: rgba(23, 32, 51, 0.86);
+      border-color: rgba(148, 163, 184, 0.22);
+    }
+
+    body[data-theme="dark"] .utility-button,
+    body[data-theme="dark"] .timeline-item,
+    body[data-theme="dark"] .date,
+    body[data-theme="dark"] .short-place span,
+    body[data-theme="dark"] .info,
+    body[data-theme="dark"] summary.lesson-summary::after {
+      background: rgba(15, 23, 42, 0.58);
+      border-color: rgba(148, 163, 184, 0.20);
+      color: #eef4ff;
+    }
+
+    body[data-theme="dark"] .value,
+    body[data-theme="dark"] .timeline-day,
+    body[data-theme="dark"] .timeline-subject,
+    body[data-theme="dark"] .subject {
+      color: #eef4ff;
+    }
+
+    body[data-theme="dark"] .notice {
+      color: #fed7aa;
+      background: rgba(249, 115, 22, 0.11);
+      border-color: rgba(251, 146, 60, 0.30);
+    }
+
+    body[data-theme="dark"] .notice-icon {
+      color: #fed7aa;
+      background: rgba(249, 115, 22, 0.18);
+    }
+
+    body[data-theme="dark"] .filter.active {
+      background: var(--blue);
+      color: white;
+      border-color: var(--blue);
+    }
+
+    body[data-theme="dark"] .timeline-type {
+      background: rgba(148, 163, 184, 0.16);
+      color: #cbd5e1;
+    }
+
+    body[data-theme="dark"] .timeline-item::before {
+      border-color: #172033;
+    }
+
+    body[data-theme="dark"] .timeline-item:hover,
+    body[data-theme="dark"] .timeline-item.active {
+      background: rgba(37, 99, 235, 0.14);
+    }
+
+    body[data-theme="dark"] .dashboard .panel {
+      background: linear-gradient(180deg, rgba(23, 32, 51, 0.92), rgba(15, 23, 42, 0.84));
+      border-color: rgba(148, 163, 184, 0.24);
+    }
+
+    body[data-theme="dark"] .timeline::before {
+      background: linear-gradient(90deg, rgba(96, 165, 250, 0.30), rgba(96, 165, 250, 0.44), rgba(96, 165, 250, 0.24));
+    }
+
+    body[data-theme="dark"] .timeline-item {
+      color: #eef4ff;
+    }
+
+    body[data-theme="dark"] .update-note {
+      background: rgba(37, 99, 235, 0.12);
+      border-color: rgba(96, 165, 250, 0.24);
+      color: #dbeafe;
+    }
+
+    body[data-theme="dark"] .update-note strong {
+      color: #bfdbfe;
+    }
+
+    body[data-theme="dark"] .update-note small {
+      color: #aab6cc;
+    }
+
+
+    .tools {
+        grid-template-columns: 1fr;
+      }
+
+      .timeline {
+        grid-auto-columns: minmax(112px, 26vw);
+      }
+
+      .filters {
+        justify-content: flex-start;
+      }
+    }
+
+    @media (max-width: 820px) {
+      .page {
+        width: min(100% - 22px, 1120px);
+        padding-top: 18px;
+      }
+
+      .hero {
+        padding: 26px;
+        border-radius: 28px;
+      }
+
+      .hero-stats {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      summary.lesson-summary {
+        grid-template-columns: 1fr;
+        gap: 12px;
+      }
+
+      summary.lesson-summary::after {
+        grid-column: 1;
+      }
+
+      .date {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        text-align: left;
+      }
+
+      .date .weekday {
+        margin-top: 0;
+      }
+
+      .details-content {
+        padding: 16px;
+      }
+    }
+
+    @media (max-width: 560px) {
+      .page {
+        width: min(100% - 18px, 1120px);
+      }
+
+      .hero {
+        padding: 22px;
+      }
+
+      .hero-stats,
+      .info-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .info.full {
+        grid-column: auto;
+      }
+
+      .month {
+        padding: 14px;
+        border-radius: 24px;
+      }
+
+      summary.lesson-summary {
+        padding: 15px;
+      }
+
+      .subject {
+        font-size: 19px;
+      }
+
+      .short-place {
+        font-size: 14px;
+      }
+
+      .to-top {
+        right: max(16px, env(safe-area-inset-right));
+        bottom: max(16px, env(safe-area-inset-bottom));
+      }
+    }
+
+    @media (max-width: 700px) {
+      .page {
+        width: min(100% - 20px, 1120px);
+        padding-top: max(14px, env(safe-area-inset-top));
+      }
+
+      .hero {
+        border-radius: 24px;
+      }
+
+      .subtitle {
+        line-height: 1.45;
+      }
+
+      .dashboard {
+        gap: 12px;
+      }
+
+      .panel {
+        padding: 16px;
+        border-radius: 22px;
+      }
+
+      .timeline-panel {
+        padding-right: 12px;
+      }
+
+      .timeline {
+        margin-right: -8px;
+        padding-right: 8px;
+      }
+
+      .timeline::before {
+        left: 24px;
+        right: 24px;
+      }
+
+      .timeline-item {
+        min-height: 118px;
+        padding: 27px 12px 12px;
+        border-radius: 18px;
+      }
+
+  
+    .hero-topline {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-bottom: 18px;
+    }
+
+    .theme-toggle {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      min-height: 38px;
+      padding: 8px 13px;
+      border: 1px solid rgba(255, 255, 255, 0.28);
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.14);
+      color: white;
+      cursor: pointer;
+      font-weight: 850;
+      backdrop-filter: blur(10px);
+      transition: transform .18s ease, background .18s ease;
+    }
+
+    .theme-toggle:hover {
+      transform: translateY(-1px);
+      background: rgba(255, 255, 255, 0.22);
+    }
+
+    .utility-strip {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+      padding: 12px;
+      margin: 0 0 20px;
+      border: 1px solid rgba(230, 235, 243, 0.92);
+      border-radius: 24px;
+      background: rgba(255, 255, 255, 0.72);
+      box-shadow: 0 10px 28px rgba(15, 23, 42, 0.06);
+      backdrop-filter: blur(12px);
+    }
+
+    .utility-label {
+      padding-left: 6px;
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 900;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    .utility-actions {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+
+    .utility-button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      min-height: 42px;
+      padding: 10px 14px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: #ffffff;
+      color: #334155;
+      cursor: pointer;
+      font-weight: 900;
+      box-shadow: 0 8px 18px rgba(15, 23, 42, 0.05);
+      transition: transform .18s ease, border-color .18s ease, background .18s ease;
+    }
+
+    .utility-button:hover {
+      transform: translateY(-1px);
+      border-color: #bfdbfe;
+      background: var(--blue-soft);
+      color: #1d4ed8;
+    }
+
+    .utility-button span {
+      width: 25px;
+      height: 25px;
+      display: grid;
+      place-items: center;
+      border-radius: 999px;
+      background: var(--blue-soft);
+      color: #1d4ed8;
+      font-weight: 950;
+    }
+
+    .toast {
+      position: fixed;
+      left: 50%;
+      bottom: max(24px, env(safe-area-inset-bottom));
+      transform: translateX(-50%) translateY(18px);
+      opacity: 0;
+      pointer-events: none;
+      padding: 12px 16px;
+      border-radius: 999px;
+      background: #111827;
+      color: white;
+      box-shadow: var(--shadow);
+      transition: opacity .22s ease, transform .22s ease;
+      font-weight: 800;
+      z-index: 30;
+      text-align: center;
+      max-width: min(92vw, 520px);
+    }
+
+    .toast.show {
+      opacity: 1;
+      transform: translateX(-50%) translateY(0);
+    }
+
+    body[data-theme="dark"] .panel,
+    body[data-theme="dark"] .month,
+    body[data-theme="dark"] .utility-strip,
+    body[data-theme="dark"] .tab,
+    body[data-theme="dark"] .control,
+    body[data-theme="dark"] .filter,
+    body[data-theme="dark"] .search {
+      background: rgba(23, 32, 51, 0.86);
+      border-color: rgba(148, 163, 184, 0.22);
+    }
+
+    body[data-theme="dark"] .utility-button,
+    body[data-theme="dark"] .timeline-item,
+    body[data-theme="dark"] .date,
+    body[data-theme="dark"] .short-place span,
+    body[data-theme="dark"] .info,
+    body[data-theme="dark"] summary.lesson-summary::after {
+      background: rgba(15, 23, 42, 0.58);
+      border-color: rgba(148, 163, 184, 0.20);
+      color: #eef4ff;
+    }
+
+    body[data-theme="dark"] .value,
+    body[data-theme="dark"] .timeline-day,
+    body[data-theme="dark"] .timeline-subject,
+    body[data-theme="dark"] .subject {
+      color: #eef4ff;
+    }
+
+    body[data-theme="dark"] .notice {
+      color: #fed7aa;
+      background: rgba(249, 115, 22, 0.11);
+      border-color: rgba(251, 146, 60, 0.30);
+    }
+
+    body[data-theme="dark"] .notice-icon {
+      color: #fed7aa;
+      background: rgba(249, 115, 22, 0.18);
+    }
+
+    body[data-theme="dark"] .filter.active {
+      background: var(--blue);
+      color: white;
+      border-color: var(--blue);
+    }
+
+    body[data-theme="dark"] .timeline-type {
+      background: rgba(148, 163, 184, 0.16);
+      color: #cbd5e1;
+    }
+
+    body[data-theme="dark"] .timeline-item::before {
+      border-color: #172033;
+    }
+
+    body[data-theme="dark"] .timeline-item:hover,
+    body[data-theme="dark"] .timeline-item.active {
+      background: rgba(37, 99, 235, 0.14);
+    }
+
+    body[data-theme="dark"] .dashboard .panel {
+      background: linear-gradient(180deg, rgba(23, 32, 51, 0.92), rgba(15, 23, 42, 0.84));
+      border-color: rgba(148, 163, 184, 0.24);
+    }
+
+    body[data-theme="dark"] .timeline::before {
+      background: linear-gradient(90deg, rgba(96, 165, 250, 0.30), rgba(96, 165, 250, 0.44), rgba(96, 165, 250, 0.24));
+    }
+
+    body[data-theme="dark"] .timeline-item {
+      color: #eef4ff;
+    }
+
+    body[data-theme="dark"] .update-note {
+      background: rgba(37, 99, 235, 0.12);
+      border-color: rgba(96, 165, 250, 0.24);
+      color: #dbeafe;
+    }
+
+    body[data-theme="dark"] .update-note strong {
+      color: #bfdbfe;
+    }
+
+    body[data-theme="dark"] .update-note small {
+      color: #aab6cc;
+    }
+
+
+    .tools {
+        gap: 10px;
+      }
+
+      .search {
+        min-height: 48px;
+        border-radius: 18px;
+      }
+
+      .filters,
+      .tabs,
+      .controls {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        width: 100%;
+      }
+
+      .filter,
+      .tab,
+      .control {
+        min-height: 44px;
+        padding: 10px 12px;
+        text-align: center;
+      }
+
+      .update-note {
+        display: block;
+      }
+
+      .utility-strip {
+        align-items: stretch;
+      }
+
+      .utility-actions {
+        width: 100%;
+      }
+
+      .utility-button {
+        flex: 1;
+      }
+
+      .toolbar {
+        gap: 10px;
+      }
+    }
+
+    @media (max-width: 430px) {
+      .page {
+        width: min(100% - 16px, 1120px);
+      }
+
+      .hero {
+        padding: 20px;
+        border-radius: 22px;
+      }
+
+      h1 {
+        font-size: clamp(32px, 12vw, 46px);
+        letter-spacing: -0.05em;
+      }
+
+      .eyebrow {
+        font-size: 13px;
+        padding: 7px 11px;
+      }
+
+      .subtitle {
+        font-size: 16px;
+      }
+
+      .hero-stats {
+        grid-template-columns: 1fr 1fr;
+        gap: 9px;
+      }
+
+      .stat {
+        padding: 13px;
+        border-radius: 17px;
+      }
+
+      .stat strong {
+        font-size: 22px;
+      }
+
+      .notice,
+      .update-note {
+        padding: 15px;
+        border-radius: 18px;
+      }
+
+      .next-subject {
+        font-size: 20px;
+      }
+
+      .timeline {
+        grid-auto-columns: minmax(106px, 34vw);
+      }
+
+      .timeline-day {
+        font-size: 20px;
+      }
+
+      .filters {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .tabs,
+      .controls {
+        grid-template-columns: 1fr;
+      }
+
+      .month {
+        padding: 12px;
+      }
+
+      .month-title {
+        font-size: 23px;
+      }
+
+      .date .day {
+        font-size: 25px;
+      }
+
+      summary.lesson-summary::after {
+        width: 100%;
+        justify-content: center;
+        text-align: center;
+      }
+    }
+
+    @media (max-width: 375px) {
+      .hero-stats {
+        grid-template-columns: 1fr;
+      }
+
+      .filters {
+        grid-template-columns: 1fr;
+      }
+
+      .timeline {
+        grid-auto-columns: minmax(100px, 42vw);
+      }
+
+      .utility-strip {
+        display: grid;
+      }
+
+      .utility-actions {
+        display: grid;
+        grid-template-columns: 1fr;
+      }
+
+      .subject {
+        font-size: 18px;
+      }
+
+      .time,
+      .type {
+        font-size: 12px;
+      }
+    }
+
+    @media (hover: none) {
+      details.lesson:hover,
+      .timeline-item:hover {
+        transform: none;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
+
+      *,
+      *::before,
+      *::after {
+        animation-duration: .01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: .01ms !important;
+      }
+    }
+
+
+    body[data-theme="dark"] details.lesson {
+      background: linear-gradient(180deg, rgba(23, 32, 51, 0.94), rgba(15, 23, 42, 0.90));
+      border-color: rgba(148, 163, 184, 0.24);
+    }
+
+    body[data-theme="dark"] details.lesson.consultation {
+      background: linear-gradient(180deg, rgba(249, 115, 22, 0.13), rgba(23, 32, 51, 0.94));
+      border-color: rgba(251, 146, 60, 0.32);
+    }
+
+    body[data-theme="dark"] details.lesson.exam {
+      background: linear-gradient(180deg, rgba(220, 38, 38, 0.12), rgba(23, 32, 51, 0.94));
+      border-color: rgba(248, 113, 113, 0.30);
+    }
+
+    body[data-theme="dark"] .date,
+    body[data-theme="dark"] .short-place span,
+    body[data-theme="dark"] .info,
+    body[data-theme="dark"] summary.lesson-summary::after {
+      background: rgba(15, 23, 42, 0.62);
+      border-color: rgba(148, 163, 184, 0.24);
+      color: #e5ecff;
+    }
+
+    body[data-theme="dark"] .date .day,
+    body[data-theme="dark"] .subject,
+    body[data-theme="dark"] .value {
+      color: #f8fbff;
+    }
+
+    body[data-theme="dark"] .date .weekday,
+    body[data-theme="dark"] .short-place,
+    body[data-theme="dark"] .label {
+      color: #aab6cc;
+    }
+
+    body[data-theme="dark"] .details-content {
+      border-top-color: rgba(148, 163, 184, 0.22);
+    }
+
+    body[data-theme="dark"] .type.credit {
+      background: rgba(22, 163, 74, 0.18);
+      color: #86efac;
+    }
+
+    body[data-theme="dark"] .type.consult {
+      background: rgba(249, 115, 22, 0.18);
+      color: #fdba74;
+    }
+
+    body[data-theme="dark"] .type.exam {
+      background: rgba(220, 38, 38, 0.18);
+      color: #fca5a5;
+    }
+
+    body[data-theme="dark"] .time {
+      background: rgba(37, 99, 235, 0.22);
+      color: #bfdbfe;
+    }
+
+    @media print {
+      body {
+        background: white;
+      }
+
+      .page {
+        width: 100%;
+        padding: 0;
+      }
+
+      .hero,
+      .month,
+      details.lesson,
+      .panel {
+        box-shadow: none;
+      }
+
+      .toolbar,
+      .tools,
+      .utility-strip,
+      .to-top,
+      .toast {
+        display: none;
+      }
+
+      details.lesson {
+        break-inside: avoid;
+      }
+
+      details.lesson:not([open]) .details-content {
+        display: block;
+      }
+
+      summary.lesson-summary::after {
+        display: none;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <section class="hero" id="top">
+      <div class="hero-content">
+        <div class="hero-topline">
+          <div class="eyebrow">СиПД-22.03 · 2025–2026 учебный год</div>
+          <button class="theme-toggle" type="button" id="themeButton" aria-pressed="false">
+            <span id="themeIcon">◐</span>
+            <span id="themeTitle">Тёмная тема</span>
+          </button>
+        </div>
+        <h1>Расписание летней сессии</h1>
+        <p class="subtitle">
+          Июнь — июль 2026 года. Зачёты, консультации и экзамены собраны в одном удобном расписании.
+        </p>
+
+        <div class="hero-stats">
+          <div class="stat">
+            <strong>9</strong>
+            <span>событий</span>
+          </div>
+          <div class="stat">
+            <strong>5</strong>
+            <span>дифференцированных зачётов</span>
+          </div>
+          <div class="stat">
+            <strong>2</strong>
+            <span>консультации</span>
+          </div>
+          <div class="stat">
+            <strong>2</strong>
+            <span>экзамена</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="notice">
+      <div class="notice-icon">!</div>
+      <div>
+        <strong>Важно</strong><br />
+        Консультации выделены отдельной пометкой. Перед занятием лучше ещё раз проверить расписание в MODEUS.
+      </div>
+    </div>
+
+    <section class="dashboard" aria-label="Ближайшее событие и таймлайн">
+      <article class="panel">
+        <p class="panel-title">Ближайшее событие</p>
+        <div class="next-card">
+          <div class="next-main">
+            <span class="next-date" id="nextDate">22.06 · 14:05</span>
+            <h2 class="next-subject" id="nextSubject">Уголовная ответственность несовершеннолетних</h2>
+            <div class="next-meta" id="nextMeta">Дифференцированный зачёт · Корпус-10 / 506</div>
+          </div>
+          <button class="next-button" type="button" id="nextButton">Перейти к карточке</button>
+        </div>
+      </article>
+
+      <article class="panel timeline-panel">
+        <p class="panel-title">Таймлайн сессии</p>
+        <div class="timeline" id="timeline">
+          <button class="timeline-item" type="button" data-target="event-22-06">
+            <span class="timeline-day">22.06</span>
+            <span class="timeline-type">зачёт</span>
+            <span class="timeline-subject">Уголовная ответственность несовершеннолетних</span>
+          </button>
+          <button class="timeline-item" type="button" data-target="event-24-06">
+            <span class="timeline-day">24.06</span>
+            <span class="timeline-type">зачёт</span>
+            <span class="timeline-subject">Криминалистика</span>
+          </button>
+          <button class="timeline-item" type="button" data-target="event-25-06">
+            <span class="timeline-day">25.06</span>
+            <span class="timeline-type">зачёт</span>
+            <span class="timeline-subject">Прокурорский надзор</span>
+          </button>
+          <button class="timeline-item" type="button" data-target="event-26-06">
+            <span class="timeline-day">26.06</span>
+            <span class="timeline-type">зачёт</span>
+            <span class="timeline-subject">Семейное право</span>
+          </button>
+          <button class="timeline-item" type="button" data-target="event-27-06">
+            <span class="timeline-day">27.06</span>
+            <span class="timeline-type">зачёт</span>
+            <span class="timeline-subject">Гражданское право</span>
+          </button>
+          <button class="timeline-item" type="button" data-target="event-02-07">
+            <span class="timeline-day">02.07</span>
+            <span class="timeline-type">консультация</span>
+            <span class="timeline-subject">Уголовный процесс</span>
+          </button>
+          <button class="timeline-item" type="button" data-target="event-03-07">
+            <span class="timeline-day">03.07</span>
+            <span class="timeline-type">экзамен</span>
+            <span class="timeline-subject">Уголовный процесс</span>
+          </button>
+          <button class="timeline-item" type="button" data-target="event-08-07">
+            <span class="timeline-day">08.07</span>
+            <span class="timeline-type">консультация</span>
+            <span class="timeline-subject">Уголовное право</span>
+          </button>
+          <button class="timeline-item" type="button" data-target="event-09-07">
+            <span class="timeline-day">09.07</span>
+            <span class="timeline-type">экзамен</span>
+            <span class="timeline-subject">Уголовное право</span>
+          </button>
+        </div>
+      </article>
+    </section>
+
+
+    <section class="utility-strip" aria-label="Полезные действия">
+      <div class="utility-label">Действия</div>
+
+      <div class="utility-actions">
+        <button class="utility-button" type="button" id="shareButton">
+          <span>↗</span>
+          Поделиться
+        </button>
+
+        <button class="utility-button" type="button" id="calendarButton">
+          <span>＋</span>
+          Скачать календарь
+        </button>
+      </div>
+    </section>
+
+    <section class="tools" aria-label="Поиск и фильтры">
+      <input class="search" id="searchInput" type="search" placeholder="Найти предмет, преподавателя, аудиторию или дату" />
+
+      <div class="filters">
+        <button class="filter active" type="button" data-filter="all">Все</button>
+        <button class="filter" type="button" data-filter="credit">Зачёты</button>
+        <button class="filter" type="button" data-filter="consultation">Консультации</button>
+        <button class="filter" type="button" data-filter="exam">Экзамены</button>
+      </div>
+    </section>
+
+    <div class="toolbar">
+      <nav class="tabs" aria-label="Быстрая навигация">
+        <a class="tab" href="#june">Июнь</a>
+        <a class="tab" href="#july">Июль</a>
+      </nav>
+
+      <div class="controls" aria-label="Управление карточками">
+        <button class="control" type="button" id="openAll">Открыть все карточки</button>
+        <button class="control" type="button" id="closeAll">Свернуть все карточки</button>
+      </div>
+    </div>
+
+    <section class="months" aria-label="Расписание летней сессии">
+      <article class="month" id="june">
+        <h2 class="month-title">Июнь</h2>
+
+        <div class="schedule">
+          <details class="lesson" id="event-22-06" data-type="credit" data-date="2026-06-22T14:05:00" data-title="Уголовная ответственность несовершеннолетних" data-search="22.06 22.06.2026 понедельник уголовная ответственность несовершеннолетних дифференцированный зачёт петров владимир васильевич корпус-10 506 уголовотвнесов ат сипд 22.03">
+            <summary class="lesson-summary">
+              <div class="date">
+                <span class="day">22.06</span>
+                <span class="weekday">Понедельник</span>
+              </div>
+              <div class="lesson-main">
+                <div class="topline">
+                  <span class="time">14:05–17:25</span>
+                  <span class="type credit">дифференцированный зачёт</span>
+                </div>
+                <h3 class="subject">Уголовная ответственность несовершеннолетних</h3>
+                <div class="short-place">
+                  <span>Корпус-10</span>
+                  <span>506 ауд.</span>
+                </div>
+              </div>
+            </summary>
+            <div class="details-content">
+              <div class="info-grid">
+                <div class="info"><span class="label">Тип</span><span class="value">Аттестация</span></div>
+                <div class="info"><span class="label">Формат</span><span class="value">Дифференцированный зачёт</span></div>
+                <div class="info full"><span class="label">Дисциплина</span><span class="value">Уголовная ответственность несовершеннолетних</span></div>
+                <div class="info"><span class="label">Группа / поток</span><span class="value">УголОтвНесов-АТ-СиПД-22.03</span></div>
+                <div class="info"><span class="label">Преподаватель</span><span class="value">Петров Владимир Васильевич</span></div>
+                <div class="info"><span class="label">Место</span><span class="value">Корпус-10 / 506</span></div>
+                <div class="info"><span class="label">Дата и время</span><span class="value">22.06.2026 Пн 14:05 — 17:25</span></div>
+              </div>
+            </div>
+          </details>
+
+          <details class="lesson" id="event-24-06" data-type="credit" data-date="2026-06-24T14:05:00" data-title="Криминалистика" data-search="24.06 24.06.2026 среда криминалистика дифференцированный зачёт еремина анна андреевна смахтин евгений владимирович корпус-10 404 крим 8 ат сипд 22.03">
+            <summary class="lesson-summary">
+              <div class="date">
+                <span class="day">24.06</span>
+                <span class="weekday">Среда</span>
+              </div>
+              <div class="lesson-main">
+                <div class="topline">
+                  <span class="time">14:05–17:25</span>
+                  <span class="type credit">дифференцированный зачёт</span>
+                </div>
+                <h3 class="subject">Криминалистика</h3>
+                <div class="short-place">
+                  <span>Корпус-10</span>
+                  <span>404 ауд.</span>
+                </div>
+              </div>
+            </summary>
+            <div class="details-content">
+              <div class="info-grid">
+                <div class="info"><span class="label">Тип</span><span class="value">Аттестация</span></div>
+                <div class="info"><span class="label">Формат</span><span class="value">Дифференцированный зачёт</span></div>
+                <div class="info full"><span class="label">Дисциплина</span><span class="value">Криминалистика</span></div>
+                <div class="info"><span class="label">Группа / поток</span><span class="value">КРИМ 8-АТ-СиПД-22.03</span></div>
+                <div class="info"><span class="label">Преподаватели</span><span class="value">Еремина Анна Андреевна, Смахтин Евгений Владимирович</span></div>
+                <div class="info"><span class="label">Место</span><span class="value">Корпус-10 / 404</span></div>
+                <div class="info"><span class="label">Дата и время</span><span class="value">24.06.2026 Ср 14:05 — 17:25</span></div>
+              </div>
+            </div>
+          </details>
+
+          <details class="lesson" id="event-25-06" data-type="credit" data-date="2026-06-25T10:15:00" data-title="Прокурорский надзор за исполнением законов судебными приставами" data-search="25.06 25.06.2026 четверг прокурорский надзор за исполнением законов судебными приставами дифференцированный зачёт герасимова наталья николаевна корпус-10 405 пнизсп ат 01">
+            <summary class="lesson-summary">
+              <div class="date">
+                <span class="day">25.06</span>
+                <span class="weekday">Четверг</span>
+              </div>
+              <div class="lesson-main">
+                <div class="topline">
+                  <span class="time">10:15–11:45</span>
+                  <span class="type credit">дифференцированный зачёт</span>
+                </div>
+                <h3 class="subject">Прокурорский надзор за исполнением законов судебными приставами</h3>
+                <div class="short-place">
+                  <span>Корпус-10</span>
+                  <span>405 ауд.</span>
+                </div>
+              </div>
+            </summary>
+            <div class="details-content">
+              <div class="info-grid">
+                <div class="info"><span class="label">Тип</span><span class="value">Аттестация</span></div>
+                <div class="info"><span class="label">Формат</span><span class="value">Дифференцированный зачёт</span></div>
+                <div class="info full"><span class="label">Дисциплина</span><span class="value">Прокурорский надзор за исполнением законов судебными приставами</span></div>
+                <div class="info"><span class="label">Группа / поток</span><span class="value">ПНИЗСП АТ-01</span></div>
+                <div class="info"><span class="label">Преподаватель</span><span class="value">Герасимова Наталья Николаевна</span></div>
+                <div class="info"><span class="label">Место</span><span class="value">Корпус-10 / 405</span></div>
+                <div class="info"><span class="label">Дата и время</span><span class="value">25.06.2026 Чт 10:15 — 11:45</span></div>
+              </div>
+            </div>
+          </details>
+
+          <details class="lesson" id="event-26-06" data-type="credit" data-date="2026-06-26T08:30:00" data-title="Семейное право" data-search="26.06 26.06.2026 пятница семейное право дифференцированный зачёт митрякова елена сергеевна корпус-10 207 сп ат сипд 22.03">
+            <summary class="lesson-summary">
+              <div class="date">
+                <span class="day">26.06</span>
+                <span class="weekday">Пятница</span>
+              </div>
+              <div class="lesson-main">
+                <div class="topline">
+                  <span class="time">08:30–11:45</span>
+                  <span class="type credit">дифференцированный зачёт</span>
+                </div>
+                <h3 class="subject">Семейное право</h3>
+                <div class="short-place">
+                  <span>Корпус-10</span>
+                  <span>207 ауд.</span>
+                </div>
+              </div>
+            </summary>
+            <div class="details-content">
+              <div class="info-grid">
+                <div class="info"><span class="label">Тип</span><span class="value">Аттестация</span></div>
+                <div class="info"><span class="label">Формат</span><span class="value">Дифференцированный зачёт</span></div>
+                <div class="info full"><span class="label">Дисциплина</span><span class="value">Семейное право</span></div>
+                <div class="info"><span class="label">Группа / поток</span><span class="value">СП-АТ-СиПД-22.03</span></div>
+                <div class="info"><span class="label">Преподаватель</span><span class="value">Митрякова Елена Сергеевна</span></div>
+                <div class="info"><span class="label">Место</span><span class="value">Корпус-10 / 207</span></div>
+                <div class="info"><span class="label">Дата и время</span><span class="value">26.06.2026 Пт 08:30 — 11:45</span></div>
+              </div>
+            </div>
+          </details>
+
+          <details class="lesson" id="event-27-06" data-type="credit" data-date="2026-06-27T15:55:00" data-title="Гражданское право" data-search="27.06 27.06.2026 суббота гражданское право дифференцированный зачёт мальцев сергей дмитриевич корпус-10 401 гп 8 ат сипд 22.03">
+            <summary class="lesson-summary">
+              <div class="date">
+                <span class="day">27.06</span>
+                <span class="weekday">Суббота</span>
+              </div>
+              <div class="lesson-main">
+                <div class="topline">
+                  <span class="time">15:55–19:10</span>
+                  <span class="type credit">дифференцированный зачёт</span>
+                </div>
+                <h3 class="subject">Гражданское право</h3>
+                <div class="short-place">
+                  <span>Корпус-10</span>
+                  <span>401 ауд.</span>
+                </div>
+              </div>
+            </summary>
+            <div class="details-content">
+              <div class="info-grid">
+                <div class="info"><span class="label">Тип</span><span class="value">Аттестация</span></div>
+                <div class="info"><span class="label">Формат</span><span class="value">Дифференцированный зачёт</span></div>
+                <div class="info full"><span class="label">Дисциплина</span><span class="value">Гражданское право</span></div>
+                <div class="info"><span class="label">Группа / поток</span><span class="value">ГП-8-АТ-СиПД-22.03</span></div>
+                <div class="info"><span class="label">Преподаватель</span><span class="value">Мальцев Сергей Дмитриевич</span></div>
+                <div class="info"><span class="label">Место</span><span class="value">Корпус-10 / 401</span></div>
+                <div class="info"><span class="label">Дата и время</span><span class="value">27.06.2026 Сб 15:55 — 19:10</span></div>
+              </div>
+            </div>
+          </details>
+        </div>
+      </article>
+
+      <article class="month" id="july">
+        <h2 class="month-title">Июль</h2>
+
+        <div class="schedule">
+          <details class="lesson consultation" id="event-02-07" data-type="consultation" data-date="2026-07-02T10:15:00" data-title="Консультация перед экзаменом по Уголовному процессу" data-search="02.07 02.07.2026 четверг консультация перед экзаменом уголовный процесс сидорова наталья вячеславовна корпус-10 203 упп2 к сипд 22.03">
+            <summary class="lesson-summary">
+              <div class="date">
+                <span class="day">02.07</span>
+                <span class="weekday">Четверг</span>
+              </div>
+              <div class="lesson-main">
+                <div class="topline">
+                  <span class="time">10:15–11:45</span>
+                  <span class="type consult">консультация</span>
+                </div>
+                <h3 class="subject">Консультация перед экзаменом по «Уголовному процессу»</h3>
+                <div class="short-place">
+                  <span>Корпус-10</span>
+                  <span>203 ауд.</span>
+                </div>
+              </div>
+            </summary>
+            <div class="details-content">
+              <div class="info-grid">
+                <div class="info"><span class="label">Тип</span><span class="value">Консультация</span></div>
+                <div class="info"><span class="label">Формат</span><span class="value">Консультация перед экзаменом</span></div>
+                <div class="info full"><span class="label">Дисциплина</span><span class="value">Уголовный процесс</span></div>
+                <div class="info"><span class="label">Группа / поток</span><span class="value">УПП2-К-СиПД-22.03</span></div>
+                <div class="info"><span class="label">Преподаватель</span><span class="value">Сидорова Наталья Вячеславовна</span></div>
+                <div class="info"><span class="label">Место</span><span class="value">Корпус-10 / 203</span></div>
+                <div class="info"><span class="label">Дата и время</span><span class="value">02.07.2026 Чт 10:15 — 11:45</span></div>
+              </div>
+            </div>
+          </details>
+
+          <details class="lesson exam" id="event-03-07" data-type="exam" data-date="2026-07-03T10:15:00" data-title="Уголовный процесс" data-search="03.07 03.07.2026 пятница уголовный процесс экзамен сидорова наталья вячеславовна корпус-10 203 упп2 ат сипд 22.03">
+            <summary class="lesson-summary">
+              <div class="date">
+                <span class="day">03.07</span>
+                <span class="weekday">Пятница</span>
+              </div>
+              <div class="lesson-main">
+                <div class="topline">
+                  <span class="time">10:15–13:35</span>
+                  <span class="type exam">экзамен</span>
+                </div>
+                <h3 class="subject">Уголовный процесс</h3>
+                <div class="short-place">
+                  <span>Корпус-10</span>
+                  <span>203 ауд.</span>
+                </div>
+              </div>
+            </summary>
+            <div class="details-content">
+              <div class="info-grid">
+                <div class="info"><span class="label">Тип</span><span class="value">Аттестация</span></div>
+                <div class="info"><span class="label">Формат</span><span class="value">Экзамен</span></div>
+                <div class="info full"><span class="label">Дисциплина</span><span class="value">Уголовный процесс</span></div>
+                <div class="info"><span class="label">Группа / поток</span><span class="value">УПП2-АТ-СиПД-22.03</span></div>
+                <div class="info"><span class="label">Преподаватель</span><span class="value">Сидорова Наталья Вячеславовна</span></div>
+                <div class="info"><span class="label">Место</span><span class="value">Корпус-10 / 203</span></div>
+                <div class="info"><span class="label">Дата и время</span><span class="value">03.07.2026 Пт 10:15 — 13:35</span></div>
+              </div>
+            </div>
+          </details>
+
+          <details class="lesson consultation" id="event-08-07" data-type="consultation" data-date="2026-07-08T10:15:00" data-title="Консультация перед экзаменом по Уголовному праву" data-search="08.07 08.07.2026 среда консультация перед экзаменом уголовное право шапель анастасия игоревна корпус-10 401 уп 8 к сипд 22.03">
+            <summary class="lesson-summary">
+              <div class="date">
+                <span class="day">08.07</span>
+                <span class="weekday">Среда</span>
+              </div>
+              <div class="lesson-main">
+                <div class="topline">
+                  <span class="time">10:15–11:45</span>
+                  <span class="type consult">консультация</span>
+                </div>
+                <h3 class="subject">Консультация перед экзаменом по «Уголовному праву»</h3>
+                <div class="short-place">
+                  <span>Корпус-10</span>
+                  <span>401 ауд.</span>
+                </div>
+              </div>
+            </summary>
+            <div class="details-content">
+              <div class="info-grid">
+                <div class="info"><span class="label">Тип</span><span class="value">Консультация</span></div>
+                <div class="info"><span class="label">Формат</span><span class="value">Консультация перед экзаменом</span></div>
+                <div class="info full"><span class="label">Дисциплина</span><span class="value">Уголовное право</span></div>
+                <div class="info"><span class="label">Группа / поток</span><span class="value">УП 8-К-СиПД-22.03</span></div>
+                <div class="info"><span class="label">Преподаватель</span><span class="value">Шапель Анастасия Игоревна</span></div>
+                <div class="info"><span class="label">Место</span><span class="value">Корпус-10 / 401</span></div>
+                <div class="info"><span class="label">Дата и время</span><span class="value">08.07.2026 Ср 10:15 — 11:45</span></div>
+              </div>
+            </div>
+          </details>
+
+          <details class="lesson exam" id="event-09-07" data-type="exam" data-date="2026-07-09T10:15:00" data-title="Уголовное право" data-search="09.07 09.07.2026 четверг уголовное право экзамен шапель анастасия игоревна корпус-10 103 уп 8 ат сипд 22.03">
+            <summary class="lesson-summary">
+              <div class="date">
+                <span class="day">09.07</span>
+                <span class="weekday">Четверг</span>
+              </div>
+              <div class="lesson-main">
+                <div class="topline">
+                  <span class="time">10:15–13:35</span>
+                  <span class="type exam">экзамен</span>
+                </div>
+                <h3 class="subject">Уголовное право</h3>
+                <div class="short-place">
+                  <span>Корпус-10</span>
+                  <span>103 ауд.</span>
+                </div>
+              </div>
+            </summary>
+            <div class="details-content">
+              <div class="info-grid">
+                <div class="info"><span class="label">Тип</span><span class="value">Аттестация</span></div>
+                <div class="info"><span class="label">Формат</span><span class="value">Экзамен</span></div>
+                <div class="info full"><span class="label">Дисциплина</span><span class="value">Уголовное право</span></div>
+                <div class="info"><span class="label">Группа / поток</span><span class="value">УП 8-АТ-СиПД-22.03</span></div>
+                <div class="info"><span class="label">Преподаватель</span><span class="value">Шапель Анастасия Игоревна</span></div>
+                <div class="info"><span class="label">Место</span><span class="value">Корпус-10 / 103</span></div>
+                <div class="info"><span class="label">Дата и время</span><span class="value">09.07.2026 Чт 10:15 — 13:35</span></div>
+              </div>
+            </div>
+          </details>
+        </div>
+      </article>
+    </section>
+
+    <div class="empty-state" id="emptyState">
+      По этому запросу ничего не найдено. Попробуй изменить поиск или выбрать другой фильтр.
+    </div>
+
+    <footer class="footer">
+      Источник расписания: MODEUS
+    </footer>
+  </main>
+
+  <button class="to-top" type="button" id="toTop" aria-label="Вернуться наверх">↑</button>
+  <div class="toast" id="toast">Готово</div>
+
+  <script>
+    const lessonDetails = Array.from(document.querySelectorAll("details.lesson"));
+    const monthBlocks = Array.from(document.querySelectorAll(".month"));
+    const toTopButton = document.getElementById("toTop");
+    const searchInput = document.getElementById("searchInput");
+    const filterButtons = Array.from(document.querySelectorAll(".filter"));
+    const timelineItems = Array.from(document.querySelectorAll(".timeline-item"));
+    const nextDate = document.getElementById("nextDate");
+    const nextSubject = document.getElementById("nextSubject");
+    const nextMeta = document.getElementById("nextMeta");
+    const nextButton = document.getElementById("nextButton");
+    const emptyState = document.getElementById("emptyState");
+    const shareButton = document.getElementById("shareButton");
+    const calendarButton = document.getElementById("calendarButton");
+    const themeButton = document.getElementById("themeButton");
+    const themeIcon = document.getElementById("themeIcon");
+    const themeTitle = document.getElementById("themeTitle");
+    const toast = document.getElementById("toast");
+    let activeFilter = "all";
+    let nextEventId = "event-22-06";
+
+    const eventInfo = {
+      "event-22-06": {
+        date: "22.06 · 14:05",
+        subject: "Уголовная ответственность несовершеннолетних",
+        meta: "Дифференцированный зачёт · Корпус-10 / 506"
+      },
+      "event-24-06": {
+        date: "24.06 · 14:05",
+        subject: "Криминалистика",
+        meta: "Дифференцированный зачёт · Корпус-10 / 404"
+      },
+      "event-25-06": {
+        date: "25.06 · 10:15",
+        subject: "Прокурорский надзор за исполнением законов судебными приставами",
+        meta: "Дифференцированный зачёт · Корпус-10 / 405"
+      },
+      "event-26-06": {
+        date: "26.06 · 08:30",
+        subject: "Семейное право",
+        meta: "Дифференцированный зачёт · Корпус-10 / 207"
+      },
+      "event-27-06": {
+        date: "27.06 · 15:55",
+        subject: "Гражданское право",
+        meta: "Дифференцированный зачёт · Корпус-10 / 401"
+      },
+      "event-02-07": {
+        date: "02.07 · 10:15",
+        subject: "Консультация перед экзаменом по «Уголовному процессу»",
+        meta: "Консультация · Корпус-10 / 203"
+      },
+      "event-03-07": {
+        date: "03.07 · 10:15",
+        subject: "Уголовный процесс",
+        meta: "Экзамен · Корпус-10 / 203"
+      },
+      "event-08-07": {
+        date: "08.07 · 10:15",
+        subject: "Консультация перед экзаменом по «Уголовному праву»",
+        meta: "Консультация · Корпус-10 / 401"
+      },
+      "event-09-07": {
+        date: "09.07 · 10:15",
+        subject: "Уголовное право",
+        meta: "Экзамен · Корпус-10 / 103"
+      }
+    };
+
+    function normalize(text) {
+      return text.toLowerCase().replace(/ё/g, "е").trim();
+    }
+
+    function applyFilters() {
+      const query = normalize(searchInput.value);
+      let visibleCount = 0;
+
+      lessonDetails.forEach((lesson) => {
+        const typeMatches = activeFilter === "all" || lesson.dataset.type === activeFilter;
+        const searchMatches = !query || normalize(lesson.dataset.search).includes(query);
+        const isVisible = typeMatches && searchMatches;
+
+        lesson.classList.toggle("hidden", !isVisible);
+
+        if (isVisible) {
+          visibleCount += 1;
+        }
+      });
+
+      monthBlocks.forEach((month) => {
+        const hasVisibleLessons = Array.from(month.querySelectorAll("details.lesson")).some((lesson) => !lesson.classList.contains("hidden"));
+        month.classList.toggle("hidden", !hasVisibleLessons);
+      });
+
+      emptyState.classList.toggle("show", visibleCount === 0);
+    }
+
+    function resetSearchAndFilter() {
+      activeFilter = "all";
+      searchInput.value = "";
+      filterButtons.forEach((button) => {
+        button.classList.toggle("active", button.dataset.filter === "all");
+      });
+      applyFilters();
+    }
+
+    function goToEvent(eventId) {
+      resetSearchAndFilter();
+
+      const eventCard = document.getElementById(eventId);
+      if (!eventCard) return;
+
+      eventCard.scrollIntoView({ behavior: "smooth", block: "center" });
+      eventCard.classList.add("focus-highlight");
+
+      timelineItems.forEach((item) => item.classList.toggle("active", item.dataset.target === eventId));
+      window.setTimeout(() => {
+        eventCard.classList.remove("focus-highlight");
+        timelineItems.forEach((item) => item.classList.remove("active"));
+      }, 1800);
+    }
+
+    function updateNextEvent() {
+      const now = new Date();
+      const upcoming = lessonDetails.find((lesson) => new Date(lesson.dataset.date) >= now);
+      const chosen = upcoming || lessonDetails[lessonDetails.length - 1];
+
+      if (!chosen) return;
+
+      nextEventId = chosen.id;
+      const info = eventInfo[nextEventId];
+
+      if (!upcoming) {
+        nextDate.textContent = "Сессия завершена";
+        nextSubject.textContent = "Все события по расписанию уже прошли";
+        nextMeta.textContent = "Можно использовать страницу как архив расписания";
+      } else {
+        nextDate.textContent = info.date;
+        nextSubject.textContent = info.subject;
+        nextMeta.textContent = info.meta;
+      }
+
+      timelineItems.forEach((item) => item.classList.toggle("active", item.dataset.target === nextEventId));
+    }
+
+    window.addEventListener("scroll", () => {
+      if (window.scrollY > 420) {
+        toTopButton.classList.add("show");
+      } else {
+        toTopButton.classList.remove("show");
+      }
+    });
+
+    toTopButton.addEventListener("click", () => {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    });
+
+    searchInput.addEventListener("input", applyFilters);
+
+    filterButtons.forEach((button) => {
+      button.addEventListener("click", () => {
+        activeFilter = button.dataset.filter;
+
+        filterButtons.forEach((filterButton) => {
+          filterButton.classList.toggle("active", filterButton === button);
+        });
+
+        applyFilters();
+      });
+    });
+
+    timelineItems.forEach((item) => {
+      item.addEventListener("click", () => {
+        goToEvent(item.dataset.target);
+      });
+    });
+
+    nextButton.addEventListener("click", () => {
+      goToEvent(nextEventId);
+    });
+
+    document.getElementById("openAll").addEventListener("click", () => {
+      lessonDetails.forEach((lesson) => {
+        if (!lesson.classList.contains("hidden")) {
+          lesson.open = true;
+        }
+      });
+    });
+
+    document.getElementById("closeAll").addEventListener("click", () => {
+      lessonDetails.forEach((lesson) => lesson.open = false);
+    });
+
+
+    const calendarText = `BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//SiPD-22.03//Summer Session 2026//RU
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:Летняя сессия СиПД-22.03
+X-WR-TIMEZONE:Asia/Yekaterinburg
+BEGIN:VTIMEZONE
+TZID:Asia/Yekaterinburg
+X-LIC-LOCATION:Asia/Yekaterinburg
+BEGIN:STANDARD
+TZOFFSETFROM:+0500
+TZOFFSETTO:+0500
+TZNAME:+05
+DTSTART:19700101T000000
+END:STANDARD
+END:VTIMEZONE
+BEGIN:VEVENT
+UID:sipd-2203-20260622-ugolotvnesov@example.local
+DTSTAMP:20260601T090000Z
+SEQUENCE:0
+DTSTART;TZID=Asia/Yekaterinburg:20260622T140500
+DTEND;TZID=Asia/Yekaterinburg:20260622T172500
+SUMMARY:Уголовная ответственность несовершеннолетних
+DESCRIPTION:Дифференцированный зачёт. Преподаватель: Петров Владимир Васильевич. Группа: СиПД-22.03.
+LOCATION:Корпус-10, 506 ауд.
+END:VEVENT
+BEGIN:VEVENT
+UID:sipd-2203-20260624-kriminalistika@example.local
+DTSTAMP:20260601T090000Z
+SEQUENCE:0
+DTSTART;TZID=Asia/Yekaterinburg:20260624T140500
+DTEND;TZID=Asia/Yekaterinburg:20260624T172500
+SUMMARY:Криминалистика
+DESCRIPTION:Дифференцированный зачёт. Преподаватели: Еремина Анна Андреевна, Смахтин Евгений Владимирович. Группа: СиПД-22.03.
+LOCATION:Корпус-10, 404 ауд.
+END:VEVENT
+BEGIN:VEVENT
+UID:sipd-2203-20260625-pnizsp@example.local
+DTSTAMP:20260601T090000Z
+SEQUENCE:0
+DTSTART;TZID=Asia/Yekaterinburg:20260625T101500
+DTEND;TZID=Asia/Yekaterinburg:20260625T114500
+SUMMARY:Прокурорский надзор за исполнением законов судебными приставами
+DESCRIPTION:Дифференцированный зачёт. Преподаватель: Герасимова Наталья Николаевна. Группа: СиПД-22.03.
+LOCATION:Корпус-10, 405 ауд.
+END:VEVENT
+BEGIN:VEVENT
+UID:sipd-2203-20260626-family@example.local
+DTSTAMP:20260601T090000Z
+SEQUENCE:0
+DTSTART;TZID=Asia/Yekaterinburg:20260626T083000
+DTEND;TZID=Asia/Yekaterinburg:20260626T114500
+SUMMARY:Семейное право
+DESCRIPTION:Дифференцированный зачёт. Преподаватель: Митрякова Елена Сергеевна. Группа: СиПД-22.03.
+LOCATION:Корпус-10, 207 ауд.
+END:VEVENT
+BEGIN:VEVENT
+UID:sipd-2203-20260627-civil@example.local
+DTSTAMP:20260601T090000Z
+SEQUENCE:0
+DTSTART;TZID=Asia/Yekaterinburg:20260627T155500
+DTEND;TZID=Asia/Yekaterinburg:20260627T191000
+SUMMARY:Гражданское право
+DESCRIPTION:Дифференцированный зачёт. Преподаватель: Мальцев Сергей Дмитриевич. Группа: СиПД-22.03.
+LOCATION:Корпус-10, 401 ауд.
+END:VEVENT
+BEGIN:VEVENT
+UID:sipd-2203-20260702-up-consult@example.local
+DTSTAMP:20260601T090000Z
+SEQUENCE:0
+DTSTART;TZID=Asia/Yekaterinburg:20260702T101500
+DTEND;TZID=Asia/Yekaterinburg:20260702T114500
+SUMMARY:Консультация перед экзаменом по уголовному процессу
+DESCRIPTION:Консультация перед экзаменом. Преподаватель: Сидорова Наталья Вячеславовна. Группа: СиПД-22.03.
+LOCATION:Корпус-10, 203 ауд.
+END:VEVENT
+BEGIN:VEVENT
+UID:sipd-2203-20260703-up-exam@example.local
+DTSTAMP:20260601T090000Z
+SEQUENCE:0
+DTSTART;TZID=Asia/Yekaterinburg:20260703T101500
+DTEND;TZID=Asia/Yekaterinburg:20260703T133500
+SUMMARY:Уголовный процесс
+DESCRIPTION:Экзамен. Преподаватель: Сидорова Наталья Вячеславовна. Группа: СиПД-22.03.
+LOCATION:Корпус-10, 203 ауд.
+END:VEVENT
+BEGIN:VEVENT
+UID:sipd-2203-20260708-crimlaw-consult@example.local
+DTSTAMP:20260601T090000Z
+SEQUENCE:0
+DTSTART;TZID=Asia/Yekaterinburg:20260708T101500
+DTEND;TZID=Asia/Yekaterinburg:20260708T114500
+SUMMARY:Консультация перед экзаменом по уголовному праву
+DESCRIPTION:Консультация перед экзаменом. Преподаватель: Шапель Анастасия Игоревна. Группа: СиПД-22.03.
+LOCATION:Корпус-10, 401 ауд.
+END:VEVENT
+BEGIN:VEVENT
+UID:sipd-2203-20260709-crimlaw-exam@example.local
+DTSTAMP:20260601T090000Z
+SEQUENCE:0
+DTSTART;TZID=Asia/Yekaterinburg:20260709T101500
+DTEND;TZID=Asia/Yekaterinburg:20260709T133500
+SUMMARY:Уголовное право
+DESCRIPTION:Экзамен. Преподаватель: Шапель Анастасия Игоревна. Группа: СиПД-22.03.
+LOCATION:Корпус-10, 103 ауд.
+END:VEVENT
+END:VCALENDAR`;
+
+    function showToast(text) {
+      toast.textContent = text;
+      toast.classList.add("show");
+      window.clearTimeout(showToast.timer);
+      showToast.timer = window.setTimeout(() => toast.classList.remove("show"), 2200);
+    }
+
+    function setTheme(theme) {
+      document.body.dataset.theme = theme;
+      localStorage.setItem("scheduleTheme", theme);
+
+      const isDark = theme === "dark";
+      themeButton.setAttribute("aria-pressed", String(isDark));
+      themeIcon.textContent = isDark ? "☼" : "◐";
+      themeTitle.textContent = isDark ? "Светлая тема" : "Тёмная тема";
+    }
+
+    function downloadCalendar() {
+      const blob = new Blob([calendarText], { type: "text/calendar;charset=utf-8" });
+      const url = URL.createObjectURL(blob);
+      const link = document.createElement("a");
+
+      link.href = url;
+      link.download = "letnyaya-sessiya-sipd-22-03.ics";
+      document.body.appendChild(link);
+      link.click();
+      link.remove();
+      URL.revokeObjectURL(url);
+
+      showToast("Файл календаря скачан. Если это новая версия, старые события лучше удалить и импортировать заново");
+    }
+
+    async function shareSchedule() {
+      const shareData = {
+        title: "Расписание летней сессии СиПД-22.03",
+        text: "Расписание летней сессии СиПД-22.03",
+        url: window.location.href
+      };
+
+      try {
+        if (navigator.share && window.isSecureContext) {
+          await navigator.share(shareData);
+          return;
+        }
+
+        await navigator.clipboard.writeText(window.location.href);
+        showToast("Ссылка скопирована");
+      } catch (error) {
+        showToast("Не получилось поделиться ссылкой");
+      }
+    }
+
+    shareButton.addEventListener("click", shareSchedule);
+    calendarButton.addEventListener("click", downloadCalendar);
+
+    themeButton.addEventListener("click", () => {
+      const currentTheme = document.body.dataset.theme === "dark" ? "light" : "dark";
+      setTheme(currentTheme);
+    });
+
+    const savedTheme = localStorage.getItem("scheduleTheme");
+    const prefersDark = window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches;
+    setTheme(savedTheme || (prefersDark ? "dark" : "light"));
+
+    updateNextEvent();
+    applyFilters();
+  </script>
+</body>
+</html>
