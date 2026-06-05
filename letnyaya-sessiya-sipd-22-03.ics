@@ -1,0 +1,136 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//SiPD-22.03//Summer Session 2026//RU
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:Летняя сессия СиПД-22.03
+X-WR-TIMEZONE:Asia/Yekaterinburg
+BEGIN:VTIMEZONE
+TZID:Asia/Yekaterinburg
+X-LIC-LOCATION:Asia/Yekaterinburg
+BEGIN:STANDARD
+TZOFFSETFROM:+0500
+TZOFFSETTO:+0500
+TZNAME:+05
+DTSTART:19700101T000000
+END:STANDARD
+END:VTIMEZONE
+BEGIN:VEVENT
+UID:sipd-2203-20260622-ugolotvnesov@example.local
+DTSTAMP:20260601T090000Z
+SEQUENCE:1
+LAST-MODIFIED:20260601T090000Z
+DTSTART;TZID=Asia/Yekaterinburg:20260622T140500
+DTEND;TZID=Asia/Yekaterinburg:20260622T172500
+SUMMARY:Уголовная ответственность несоверш
+ еннолетних
+DESCRIPTION:Дифференцированный зачёт. Препода
+ ватель: Петров Владимир Васильевич. Груп
+ па: СиПД-22.03.
+LOCATION:Корпус-10 / 506
+END:VEVENT
+BEGIN:VEVENT
+UID:sipd-2203-20260624-kriminalistika@example.local
+DTSTAMP:20260601T090000Z
+SEQUENCE:1
+LAST-MODIFIED:20260601T090000Z
+DTSTART;TZID=Asia/Yekaterinburg:20260624T140500
+DTEND;TZID=Asia/Yekaterinburg:20260624T172500
+SUMMARY:Криминалистика
+DESCRIPTION:Дифференцированный зачёт. Препода
+ ватель: Еремина Анна Андреевна\, Смахтин 
+ Евгений Владимирович. Группа: СиПД-22.03.
+LOCATION:Корпус-10 / 404
+END:VEVENT
+BEGIN:VEVENT
+UID:sipd-2203-20260625-pnizsp@example.local
+DTSTAMP:20260601T090000Z
+SEQUENCE:1
+LAST-MODIFIED:20260601T090000Z
+DTSTART;TZID=Asia/Yekaterinburg:20260625T101500
+DTEND;TZID=Asia/Yekaterinburg:20260625T114500
+SUMMARY:Прокурорский надзор за исполнением 
+ законов судебными приставами
+DESCRIPTION:Дифференцированный зачёт. Препода
+ ватель: Герасимова Наталья Николаевна. Г
+ руппа: СиПД-22.03.
+LOCATION:Корпус-10 / 405
+END:VEVENT
+BEGIN:VEVENT
+UID:sipd-2203-20260626-family@example.local
+DTSTAMP:20260601T090000Z
+SEQUENCE:1
+LAST-MODIFIED:20260601T090000Z
+DTSTART;TZID=Asia/Yekaterinburg:20260626T083000
+DTEND;TZID=Asia/Yekaterinburg:20260626T114500
+SUMMARY:Семейное право
+DESCRIPTION:Дифференцированный зачёт. Препода
+ ватель: Митрякова Елена Сергеевна. Групп
+ а: СиПД-22.03.
+LOCATION:Корпус-10 / 207
+END:VEVENT
+BEGIN:VEVENT
+UID:sipd-2203-20260627-civil@example.local
+DTSTAMP:20260601T090000Z
+SEQUENCE:1
+LAST-MODIFIED:20260601T090000Z
+DTSTART;TZID=Asia/Yekaterinburg:20260627T155500
+DTEND;TZID=Asia/Yekaterinburg:20260627T191000
+SUMMARY:Гражданское право
+DESCRIPTION:Дифференцированный зачёт. Препода
+ ватель: Мальцев Сергей Дмитриевич. Групп
+ а: СиПД-22.03.
+LOCATION:Корпус-10 / 401
+END:VEVENT
+BEGIN:VEVENT
+UID:sipd-2203-20260702-up-consult@example.local
+DTSTAMP:20260601T090000Z
+SEQUENCE:1
+LAST-MODIFIED:20260601T090000Z
+DTSTART;TZID=Asia/Yekaterinburg:20260702T101500
+DTEND;TZID=Asia/Yekaterinburg:20260702T114500
+SUMMARY:Консультация перед экзаменом по «Уг
+ оловному процессу»
+DESCRIPTION:Консультация. Преподаватель: Сидо
+ рова Наталья Вячеславовна. Группа: СиПД-2
+ 2.03.
+LOCATION:Корпус-10 / 203
+END:VEVENT
+BEGIN:VEVENT
+UID:sipd-2203-20260703-up-exam@example.local
+DTSTAMP:20260601T090000Z
+SEQUENCE:1
+LAST-MODIFIED:20260601T090000Z
+DTSTART;TZID=Asia/Yekaterinburg:20260703T101500
+DTEND;TZID=Asia/Yekaterinburg:20260703T133500
+SUMMARY:Уголовный процесс
+DESCRIPTION:Экзамен. Преподаватель: Сидорова Н
+ аталья Вячеславовна. Группа: СиПД-22.03.
+LOCATION:Корпус-10 / 203
+END:VEVENT
+BEGIN:VEVENT
+UID:sipd-2203-20260708-crimlaw-consult@example.local
+DTSTAMP:20260601T090000Z
+SEQUENCE:1
+LAST-MODIFIED:20260601T090000Z
+DTSTART;TZID=Asia/Yekaterinburg:20260708T101500
+DTEND;TZID=Asia/Yekaterinburg:20260708T114500
+SUMMARY:Консультация перед экзаменом по «Уг
+ оловному праву»
+DESCRIPTION:Консультация. Преподаватель: Шапе
+ ль Анастасия Игоревна. Группа: СиПД-22.03.
+LOCATION:Корпус-10 / 401
+END:VEVENT
+BEGIN:VEVENT
+UID:sipd-2203-20260709-crimlaw-exam@example.local
+DTSTAMP:20260601T090000Z
+SEQUENCE:1
+LAST-MODIFIED:20260601T090000Z
+DTSTART;TZID=Asia/Yekaterinburg:20260709T101500
+DTEND;TZID=Asia/Yekaterinburg:20260709T133500
+SUMMARY:Уголовное право
+DESCRIPTION:Экзамен. Преподаватель: Шапель Ана
+ стасия Игоревна. Группа: СиПД-22.03.
+LOCATION:Корпус-10 / 103
+END:VEVENT
+END:VCALENDAR
